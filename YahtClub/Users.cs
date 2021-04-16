@@ -20,6 +20,7 @@ namespace YahtClub
         public int role_id { get; set; }
         public bool is_banned { get; set; }
         public Nullable<System.DateTime> last_entry { get; set; }
+        public Nullable<System.DateTime> date_pass_change { get; set; }
     
         public virtual Roles Roles { get; set; }
     }

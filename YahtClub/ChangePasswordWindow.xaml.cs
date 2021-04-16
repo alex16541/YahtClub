@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Data.Entity;
 
 namespace YahtClub
 {
@@ -19,9 +20,13 @@ namespace YahtClub
     /// </summary>
     public partial class ChangePasswordWindow : Window
     {
+        public string Login { get; set; }
+        Entities db = new Entities();
         public ChangePasswordWindow()
         {
             InitializeComponent();
+            this.Top = (1080 - this.Height) / 2;
+            this.Left = (1920 - this.Width) / 2;
         }
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
@@ -31,7 +36,24 @@ namespace YahtClub
 
         private void btnConfirm_Click(object sender, RoutedEventArgs e)
         {
-
+            if (pbPassword.Password != "")
+            {
+                if (pbPassword.Password == pbPassword_Copy.Password)
+                {
+                    var user = db.Users.Where(u => u.login == Login).FirstOrDefault();
+                    if (pbPassword.Password != user.password)
+                    {
+                        user.password = pbPassword.Password;
+                        user.date_pass_change = DateTime.Now;
+                        db.SaveChanges();
+                        db.Dispose();
+                        DialogResult = true;
+                        this.Close();
+                    }
+                }
+                else MessageBox.Show("Пароли не совпадают.", "Внимание!", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+            else MessageBox.Show("Ведите пароль.", "Внимание!", MessageBoxButton.OK, MessageBoxImage.Warning);
         }
     }
 }

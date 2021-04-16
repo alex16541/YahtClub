@@ -177,6 +177,7 @@
           <Property Name="role_id" Type="int" Nullable="false" />
           <Property Name="is_banned" Type="bit" Nullable="false" />
           <Property Name="last_entry" Type="date" />
+          <Property Name="date_pass_change" Type="date" />
         </EntityType>
         <EntityType Name="Wood">
           <Key>
@@ -942,6 +943,7 @@
           <NavigationProperty Name="Roles" Relationship="Model.FK_Users_Roles" FromRole="Users" ToRole="Roles" />
           <Property Name="is_banned" Type="Boolean" Nullable="false" />
           <Property Name="last_entry" Type="DateTime" Precision="0" />
+          <Property Name="date_pass_change" Type="DateTime" Precision="0" />
         </EntityType>
         <Association Name="FK_Users_Roles">
           <End Type="Model.Roles" Role="Roles" Multiplicity="1" />
@@ -1151,6 +1153,7 @@
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="Model.Users">
               <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="date_pass_change" ColumnName="date_pass_change" />
                 <ScalarProperty Name="last_entry" ColumnName="last_entry" />
                 <ScalarProperty Name="is_banned" ColumnName="is_banned" />
                 <ScalarProperty Name="role_id" ColumnName="role_id" />

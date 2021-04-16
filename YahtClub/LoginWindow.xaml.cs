@@ -57,27 +57,26 @@ namespace YahtClub
                         {
                             if (user.password == pbPassword.Password)
                             {
-                                MessageBox.Show($"Добро пожаловать {user.login}", "Здравствуйте!", MessageBoxButton.OK, MessageBoxImage.Information);
                                 passedLogin = 0;
                                 user.last_entry = DateTime.Now;
                                 db.SaveChanges();
-                                navigateThis(new MainWindow { Login = tbLogin.Text });
+                                navigateThis(new MainWindow { Login = tbLogin.Text});
+                            }
+                            else
+                            {
+                                MessageBox.Show("Вы ввели не верный логин или пароль. Пожалуйста проверьте ещё раз введенные данные.", "Внимание!", MessageBoxButton.OK, MessageBoxImage.Warning);
+                                passedLogin++;
+                                if (passedLogin == 3)
+                                {
+                                    MessageBox.Show($"Вы заблокированы на {seconds} секунд.", "Внимание!", MessageBoxButton.OK, MessageBoxImage.Warning);
+                                    secondsLeft = seconds;
+                                    timer.Start();
+                                    seconds += 20;
+                                }
                             }
                         }
                     }    
                     else MessageBox.Show("Этот аккаунт заблокирован.", "Внимание!", MessageBoxButton.OK, MessageBoxImage.Warning);
-                }
-                else
-                {
-                    MessageBox.Show("Вы ввели не верный логин или пароль. Пожалуйста проверьте ещё раз введенные данные.", "Внимание!", MessageBoxButton.OK, MessageBoxImage.Warning);
-                    passedLogin++;
-                    if (passedLogin == 3)
-                    {
-                        MessageBox.Show($"Вы заблокированы на {seconds} секунд.", "Внимание!", MessageBoxButton.OK, MessageBoxImage.Warning);
-                        secondsLeft = seconds;
-                        timer.Start();
-                        seconds += 20;
-                    }
                 }
             }
             else MessageBox.Show($"Вы заблокированы на {secondsLeft} секунд.", "Внимание!", MessageBoxButton.OK, MessageBoxImage.Warning);

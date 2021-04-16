@@ -1,0 +1,36 @@
+﻿<Page x:Class="YahtClub.UsersPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:YahtClub"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="800"
+      Title="UsersPage" Background="White" Loaded="Page_Loaded">
+
+    <Grid>
+        <DataGrid x:Name="dgUsers" HorizontalAlignment="Left" Height="490" Margin="10,10,0,0" 
+                  VerticalAlignment="Top" Width="780" FontSize="18"
+                  AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Логин" Binding="{Binding login}"/>
+                <DataGridTextColumn Header="Пароль" Binding="{Binding password}"/>
+                <DataGridTextColumn Header="Роль" Binding="{Binding Roles.role}"/>
+                <DataGridCheckBoxColumn Header="Заблокированность" Binding="{Binding is_banned}"/>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Button Content="Edit" x:Name="btnEdit" Click="btnEdit_Click"/>
+                                <Button Content="Delate" x:Name="btnDelate" Click="btnDelate_Click"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="btnBack" Content="Back" HorizontalAlignment="Center" Margin="10,500,500,10" VerticalAlignment="Center" Width="246" Height="36" 
+            FontSize="20" Click="btnBack_Click" />
+
+    </Grid>
+</Page>

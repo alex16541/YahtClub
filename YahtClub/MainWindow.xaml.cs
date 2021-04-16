@@ -21,12 +21,24 @@ namespace YahtClub
     public partial class MainWindow : NavigationWindow
     {
         public string Login { get; set; }
+        Entities db = new Entities();
         public MainWindow()
         {
             InitializeComponent();
             this.Top = (1080 - this.Height) / 2;
             this.Left = (1920 - this.Width) / 2;
-            this.NavigationService.Navigate(new MainMenu {owner = this});
+        }
+
+        private void NavigationWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            var role = db.Roles.Where(r => r.id == db.Users.Where(u => u.login == Login).FirstOrDefault().role_id).FirstOrDefault().role;
+            switch (role)
+            {
+                case "A": this.NavigationService.Navigate(new AdminMenu { owner = this }); break;
+                case "C": this.NavigationService.Navigate(new MainMenu  { owner = this }); break;
+                default:
+                    break;
+            }
         }
     }
 }

@@ -9,7 +9,7 @@
       Title="MainMenu" Background="White">
 
     <Grid>
-        <Button x:Name="btnExit" Content="Exit" HorizontalAlignment="Center" Margin="364,362,190,202" VerticalAlignment="Center" Width="246" Height="36" FontSize="18" Click="btnExit_Click" />
-
+        <Button x:Name="btnExit" Content="Exit" HorizontalAlignment="Center" Margin="100,200,100,100" VerticalAlignment="Center" Width="246" Height="36" 
+                FontSize="18" Click="btnExit_Click" />
     </Grid>
 </Page>
