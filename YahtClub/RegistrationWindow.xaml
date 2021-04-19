@@ -7,12 +7,12 @@
         mc:Ignorable="d"
         Title="RegistrationWindow" Height="450" Width="400">
     <Grid>
-        <Label Content="Login:" HorizontalAlignment="Center" Margin="100,55,230,333" VerticalAlignment="Center" FontSize="16" Height="31" Width="62"/>
+        <Label Content="Login:" HorizontalAlignment="Center" Margin="103,55,234,333" VerticalAlignment="Center" FontSize="16" Height="31" Width="55"/>
         <Label Content="Password:" HorizontalAlignment="Center" Margin="76,86,230,303" VerticalAlignment="Center" FontSize="16" Height="30" Width="86"/>
         <TextBox x:Name="tbLogin" HorizontalAlignment="Center" Height="26" Margin="167,59,80,334" TextWrapping="Wrap" VerticalAlignment="Center" Width="145" FontSize="14"/>
         <PasswordBox x:Name="pbPassword" HorizontalAlignment="Center" Margin="167,90,80,303" VerticalAlignment="Center" Width="145" Height="26" FontSize="14"/>
-        <Button x:Name="btnReg" Content="Registrate" HorizontalAlignment="Center" Margin="66,246,80,137" VerticalAlignment="Center" Width="246" Height="36" FontSize="18" Click="btnReg_Click"/>
-        <Label Content="Repete password:" HorizontalAlignment="Center" Margin="21,117,230,272" VerticalAlignment="Center" FontSize="16" Height="30" Width="141"/>
+        <Button x:Name="btnAdd" Content="Add" HorizontalAlignment="Center" Margin="66,246,80,137" VerticalAlignment="Center" Width="246" Height="36" FontSize="18" Click="btnReg_Click"/>
+        <Label Content="Role:" HorizontalAlignment="Center" Margin="112,121,230,268" VerticalAlignment="Center" FontSize="16" Height="30" Width="50"/>
         <PasswordBox x:Name="pbPassword_Copy" HorizontalAlignment="Center" Margin="167,121,80,272" VerticalAlignment="Center" Width="145" Height="26" FontSize="14"/>
         <Button x:Name="btnReg_Copy" Content="Cancel" HorizontalAlignment="Center" Margin="66,352,80,31" VerticalAlignment="Center" Width="246" Height="36" FontSize="18" Click="btnReg_Copy_Click" />
 

@@ -32,6 +32,7 @@ namespace YahtClub
             db.Users.Load();
             db.Roles.Load();
             dgUsers.ItemsSource = db.Users.ToList();
+            dgUsers.SelectedValuePath = "login";
         }
 
         private void btnBack_Click(object sender, RoutedEventArgs e)
@@ -41,12 +42,15 @@ namespace YahtClub
 
         private void btnEdit_Click(object sender, RoutedEventArgs e)
         {
-
+            if (new UserAddWindow(db){ isEditable = true, userLogin = dgUsers.SelectedValue.ToString() }.ShowDialog() == true)
+            {
+                dgRefresh();
+            }
         }
 
         private void btnDelate_Click(object sender, RoutedEventArgs e)
         {
-            var user = db.Users.Where(u => u.id == dgUsers.SelectedIndex + 1).FirstOrDefault();
+            var user = db.Users.Where(u => u.login == dgUsers.SelectedValue.ToString()).FirstOrDefault();
             if (user.is_banned)
             {
                 
@@ -54,9 +58,24 @@ namespace YahtClub
                 {
                     db.Users.Remove(user);
                     db.SaveChanges();
+                    dgRefresh();
                 }
             }
             else MessageBox.Show("Этот пользователь не заблокирован. Удаление невозможно.", "Внимани", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+
+        private void btnAddNewUser_Click(object sender, RoutedEventArgs e)
+        {
+            if(new UserAddWindow(db).ShowDialog()==true)
+            {
+                dgRefresh();
+            }
+        }
+        private void dgRefresh()
+        {
+
+            dgUsers.ItemsSource = db.Users.ToList();
+            dgUsers.Items.Refresh();
         }
     }
 }

@@ -31,6 +31,7 @@
         </DataGrid>
         <Button x:Name="btnBack" Content="Back" HorizontalAlignment="Center" Margin="10,500,500,10" VerticalAlignment="Center" Width="246" Height="36" 
             FontSize="20" Click="btnBack_Click" />
-
+        <Button x:Name="btnAddNewUser" Content="Add New User" HorizontalAlignment="Center" Margin="500,500,10,10" VerticalAlignment="Center" Width="246" Height="36" 
+            FontSize="20" Click="btnAddNewUser_Click" />
     </Grid>
 </Page>
