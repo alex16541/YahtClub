@@ -17,20 +17,24 @@ namespace YahtClub
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Order()
         {
-            this.OrderDetails = new HashSet<OrderDetails>();
+            this.Contract = new HashSet<Contract>();
+            this.Detail = new HashSet<Detail>();
         }
     
-        public int id { get; set; }
-        public System.DateTime date { get; set; }
-        public int salesperson_id { get; set; }
-        public int customer_id { get; set; }
-        public int boat_id { get; set; }
-        public string addres { get; set; }
-        public string city { get; set; }
+        public int Order_ID { get; set; }
+        public System.DateTime Date { get; set; }
+        public Nullable<int> Salesperson_ID { get; set; }
+        public Nullable<int> Customer_ID { get; set; }
+        public Nullable<int> Boat_ID { get; set; }
+        public string DeliveryAddress { get; set; }
+        public string City { get; set; }
     
-        public virtual Customers Customers { get; set; }
-        public virtual SalesPersons SalesPersons { get; set; }
+        public virtual Boats Boats { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<OrderDetails> OrderDetails { get; set; }
+        public virtual ICollection<Contract> Contract { get; set; }
+        public virtual Customer Customer { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Detail> Detail { get; set; }
+        public virtual Salesperson Salesperson { get; set; }
     }
 }

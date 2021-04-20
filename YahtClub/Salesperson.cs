@@ -12,24 +12,19 @@ namespace YahtClub
     using System;
     using System.Collections.Generic;
     
-    public partial class Contracts
+    public partial class Salesperson
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Contracts()
+        public Salesperson()
         {
-            this.Invoice = new HashSet<Invoice>();
+            this.Order = new HashSet<Order>();
         }
     
-        public int id { get; set; }
-        public System.DateTime date { get; set; }
-        public decimal deposite_payed { get; set; }
-        public int order_id { get; set; }
-        public decimal total_price { get; set; }
-        public decimal total_price_inclVAT { get; set; }
-        public string production_process { get; set; }
+        public int SalesPerson_ID { get; set; }
+        public string FirstName { get; set; }
+        public string FamilyName { get; set; }
     
-        public virtual OrderDetails OrderDetails { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Invoice> Invoice { get; set; }
+        public virtual ICollection<Order> Order { get; set; }
     }
 }

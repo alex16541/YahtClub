@@ -17,13 +17,13 @@ namespace YahtClub
     /// <summary>
     /// Логика взаимодействия для RegistrationWindow.xaml
     /// </summary>
-    public partial class UserAddWindow : Window
+    public partial class BoatAddWindow : Window
     {
         public Entities db { get; set; }
-        Users user = new Users();
-        public string userLogin = "";
+        Boats boat = new Boats();
+        public string boatModel = "";
         public bool isEditable = false;
-        public UserAddWindow(Entities db)
+        public BoatAddWindow(Entities db)
         {
             InitializeComponent();
             this.db = db;
@@ -33,24 +33,16 @@ namespace YahtClub
         {
             this.Top = (1080 - this.Height) / 2;
             this.Left = (1920 - this.Width) / 2;
-            cbRole.ItemsSource = db.Roles.ToList();
-            cbRole.DisplayMemberPath = "role";
-            cbRole.SelectedValuePath = "id";
             if(isEditable)
             {
-                user = db.Users.Where(u => u.login == userLogin).FirstOrDefault();
-                cbRole.SelectedIndex = (int)user.role_id-1;
-                tbLogin.Text = user.login;
-                pbPassword.Password = user.password;
-                cbIsBanned.IsChecked = user.is_banned;
-                tbLogin.IsEnabled = false;
+                boat = db.Boats.Where(u => u.Model == boatModel).FirstOrDefault();
+                tbPrice.Text = boat.BasePrice.ToString();
+                tbColor.Text = boat.Colour;
+                cbMast.IsChecked = boat.Mast;
+                tbModel.IsEnabled = false;
                 btnAdd.Content = "Edit";
-                Title = "Edit user";
-                cbIsBanned.Visibility = Visibility.Visible;
-            }
-            else
-            {
-                cbRole.SelectedIndex = 0;
+                Title = "Edit boat";
+                cbMast.Visibility = Visibility.Visible;
             }
         }
 
@@ -61,11 +53,12 @@ namespace YahtClub
 
         private void btnReg_Click(object sender, RoutedEventArgs e)
         {
-            if (pbPassword.Password != "" && tbLogin.Text != "" && cbRole.Text != "")
+            if (tbPrice.Text != "" && tbNoR.Text != "" && tbModel.Text != "" && tbColor.Text != ""
+                && tbType.Text != "" && tbVat.Text != "" && tbWood.Text != "")
             {
-                user.login = tbLogin.Text;
-                user.password = pbPassword.Password;
-                user.role_id = (int)cbRole.SelectedValue;
+                boat.Model = tbModel.Text;
+                boat.Colour = tbColor.Text;
+                boat.BasePrice = tbPrice.Text;
                 if (isEditable)
                 {
                     user.is_banned = (bool)cbIsBanned.IsChecked;

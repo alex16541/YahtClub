@@ -29,7 +29,7 @@ namespace YahtClub
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            if (db.Users.Where(u => u.login == owner.Login).FirstOrDefault().date_pass_change.Value.AddDays(15) <= DateTime.Now)
+            if (db.Users.Where(u => u.login == owner.Login).FirstOrDefault().pass_change_date.Value.AddDays(15) <= DateTime.Now)
             {
                 if (new ChangePasswordWindow { Login = owner.Login }.ShowDialog() == true)
                     MessageBox.Show("Пароль успешно изменён", "Пароль", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -47,5 +47,9 @@ namespace YahtClub
             NavigationService.Navigate(new UsersPage());
         }
 
+        private void btnProducts_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new FitPage());
+        }
     }
 }

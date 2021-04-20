@@ -17,10 +17,11 @@ namespace YahtClub
         public int id { get; set; }
         public string login { get; set; }
         public string password { get; set; }
-        public int role_id { get; set; }
+        public Nullable<int> role_id { get; set; }
+        public System.DateTime registeredDate { get; set; }
         public bool is_banned { get; set; }
         public Nullable<System.DateTime> last_entry { get; set; }
-        public Nullable<System.DateTime> date_pass_change { get; set; }
+        public Nullable<System.DateTime> pass_change_date { get; set; }
     
         public virtual Roles Roles { get; set; }
     }

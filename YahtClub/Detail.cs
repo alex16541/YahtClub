@@ -12,18 +12,13 @@ namespace YahtClub
     using System;
     using System.Collections.Generic;
     
-    public partial class TypesOfPassports
+    public partial class Detail
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public TypesOfPassports()
-        {
-            this.Pasports = new HashSet<Pasports>();
-        }
+        public int Detail_ID { get; set; }
+        public Nullable<int> Accessory_ID { get; set; }
+        public Nullable<int> Order_ID { get; set; }
     
-        public int id { get; set; }
-        public string title { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Pasports> Pasports { get; set; }
+        public virtual Accessory Accessory { get; set; }
+        public virtual Order Order { get; set; }
     }
 }

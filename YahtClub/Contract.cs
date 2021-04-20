@@ -12,20 +12,24 @@ namespace YahtClub
     using System;
     using System.Collections.Generic;
     
-    public partial class Pasports
+    public partial class Contract
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Pasports()
+        public Contract()
         {
-            this.Customers = new HashSet<Customers>();
+            this.Invoice = new HashSet<Invoice>();
         }
     
-        public int id { get; set; }
-        public int number { get; set; }
-        public int type_of_passport { get; set; }
+        public int Contract_ID { get; set; }
+        public System.DateTime Date { get; set; }
+        public decimal DepositPayed { get; set; }
+        public Nullable<int> Order_ID { get; set; }
+        public decimal ContractTotalPrice { get; set; }
+        public decimal ContracTotalPrice_inclVAT { get; set; }
+        public string ProductionProcess { get; set; }
     
+        public virtual Order Order { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Customers> Customers { get; set; }
-        public virtual TypesOfPassports TypesOfPassports { get; set; }
+        public virtual ICollection<Invoice> Invoice { get; set; }
     }
 }

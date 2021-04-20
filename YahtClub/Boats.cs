@@ -12,28 +12,28 @@ namespace YahtClub
     using System;
     using System.Collections.Generic;
     
-    public partial class Boat
+    public partial class Boats
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Boat()
+        public Boats()
         {
-            this.AccToBoats = new HashSet<AccToBoats>();
+            this.Fit = new HashSet<Fit>();
+            this.Order = new HashSet<Order>();
         }
     
-        public int id { get; set; }
-        public string model { get; set; }
-        public int boat_type_id { get; set; }
-        public string nummber_of_rowers { get; set; }
-        public bool mast { get; set; }
-        public int color_id { get; set; }
-        public int wood_id { get; set; }
-        public decimal base_price { get; set; }
-        public string vat { get; set; }
+        public int boat_ID { get; set; }
+        public string Model { get; set; }
+        public string BoatType { get; set; }
+        public int NumberOfRowers { get; set; }
+        public bool Mast { get; set; }
+        public string Colour { get; set; }
+        public string Wood { get; set; }
+        public decimal BasePrice { get; set; }
+        public string VAT { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<AccToBoats> AccToBoats { get; set; }
-        public virtual BoatType BoatType { get; set; }
-        public virtual Colors Colors { get; set; }
-        public virtual Wood Wood { get; set; }
+        public virtual ICollection<Fit> Fit { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Order> Order { get; set; }
     }
 }

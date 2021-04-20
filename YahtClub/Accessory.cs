@@ -12,28 +12,29 @@ namespace YahtClub
     using System;
     using System.Collections.Generic;
     
-    public partial class Customers
+    public partial class Accessory
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Customers()
+        public Accessory()
         {
-            this.Order = new HashSet<Order>();
+            this.Detail = new HashSet<Detail>();
+            this.Fit = new HashSet<Fit>();
         }
     
-        public int id { get; set; }
-        public string first_name { get; set; }
-        public string family_name { get; set; }
-        public System.DateTime date_of_birthday { get; set; }
-        public string adress { get; set; }
-        public string city { get; set; }
-        public string email { get; set; }
-        public string phone { get; set; }
-        public int pasport_id { get; set; }
-        public int organisation_id { get; set; }
+        public int Accessory_ID { get; set; }
+        public string AccName { get; set; }
+        public string DescriptionOfAccessory { get; set; }
+        public decimal Price { get; set; }
+        public string VAT { get; set; }
+        public int Inventory { get; set; }
+        public int OrderLevel { get; set; }
+        public int OrderBatch { get; set; }
+        public Nullable<int> Partner_ID { get; set; }
     
-        public virtual Organisations Organisations { get; set; }
-        public virtual Pasports Pasports { get; set; }
+        public virtual Partner Partner { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Order> Order { get; set; }
+        public virtual ICollection<Detail> Detail { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Fit> Fit { get; set; }
     }
 }

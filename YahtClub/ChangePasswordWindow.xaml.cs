@@ -44,7 +44,7 @@ namespace YahtClub
                     if (pbPassword.Password != user.password)
                     {
                         user.password = pbPassword.Password;
-                        user.date_pass_change = DateTime.Now;
+                        user.pass_change_date = DateTime.Now;
                         db.SaveChanges();
                         db.Dispose();
                         DialogResult = true;

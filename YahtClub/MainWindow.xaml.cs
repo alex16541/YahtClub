@@ -31,7 +31,7 @@ namespace YahtClub
 
         private void NavigationWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            var role = db.Roles.Where(r => r.id == db.Users.Where(u => u.login == Login).FirstOrDefault().role_id).FirstOrDefault().role;
+            var role = db.Roles.Where(r => r.id == db.Users.Where(u => u.login == Login).FirstOrDefault().role_id).FirstOrDefault().title;
             switch (role)
             {
                 case "A": this.NavigationService.Navigate(new AdminMenu { owner = this }); break;

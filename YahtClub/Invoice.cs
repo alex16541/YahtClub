@@ -14,13 +14,13 @@ namespace YahtClub
     
     public partial class Invoice
     {
-        public int id { get; set; }
-        public int contract_id { get; set; }
-        public bool settled { get; set; }
-        public decimal sum { get; set; }
-        public decimal sum_inclVAT { get; set; }
-        public System.DateTime date { get; set; }
+        public int Invoice_ID { get; set; }
+        public Nullable<int> Contract_ID { get; set; }
+        public bool Settled { get; set; }
+        public decimal Sum { get; set; }
+        public decimal Sum_inclVAT { get; set; }
+        public System.DateTime Date { get; set; }
     
-        public virtual Contracts Contracts { get; set; }
+        public virtual Contract Contract { get; set; }
     }
 }

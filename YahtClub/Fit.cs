@@ -12,18 +12,13 @@ namespace YahtClub
     using System;
     using System.Collections.Generic;
     
-    public partial class Partners
+    public partial class Fit
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Partners()
-        {
-            this.Accessory_id = new HashSet<Accessory_id>();
-        }
+        public int Fit_ID { get; set; }
+        public Nullable<int> Accessory_ID { get; set; }
+        public Nullable<int> Boat_ID { get; set; }
     
-        public int id { get; set; }
-        public string name { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Accessory_id> Accessory_id { get; set; }
+        public virtual Accessory Accessory { get; set; }
+        public virtual Boats Boats { get; set; }
     }
 }

@@ -11,8 +11,8 @@
     <Grid>
         <Button x:Name="btnUsers" Content="Users" HorizontalAlignment="Center" Margin="0,0,400,230" VerticalAlignment="Center" Width="353" Height="130"
                 FontSize="20" Click="btnUsers_Click"/>
-        <Button Content="Products" HorizontalAlignment="Center" Margin="400,0,0,230" VerticalAlignment="Center" Width="353" Height="130"
-                FontSize="20"/>
+        <Button x:Name="btnProducts" Content="Products" HorizontalAlignment="Center" Margin="400,0,0,230" VerticalAlignment="Center" Width="353" Height="130"
+                FontSize="20" Click="btnProducts_Click"/>
         <Button Content="Prices" HorizontalAlignment="Center" Margin="0,200,400,100" VerticalAlignment="Center" Width="353" Height="130"
                 FontSize="20"/>
         <Button x:Name="btnExit" Content="Exit" HorizontalAlignment="Center" Margin="500,500,10,10" VerticalAlignment="Center" Width="246" Height="36" 
