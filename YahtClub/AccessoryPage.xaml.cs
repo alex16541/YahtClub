@@ -17,21 +17,21 @@ using System.Data.Entity;
 namespace YahtClub
 {
     /// <summary>
-    /// Логика взаимодействия для UsersPage.xaml
+    /// Логика взаимодействия для AccessoryPage.xaml
     /// </summary>
-    public partial class BoatsPage : Page
+    public partial class AccessoryPage : Page
     {
         Entities db = new Entities();
-        public BoatsPage()
+        public AccessoryPage()
         {
             InitializeComponent();
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            db.Boats.Load();
-            dgBoats.ItemsSource = db.Boats.ToList();
-            dgBoats.SelectedValuePath = "Model";
+            db.Accessory.Load();
+            dgAcc.ItemsSource = db.Accessory.ToList();
+            dgAcc.SelectedValuePath = "AccName";
         }
 
         private void btnBack_Click(object sender, RoutedEventArgs e)
@@ -41,7 +41,7 @@ namespace YahtClub
 
         private void btnEdit_Click(object sender, RoutedEventArgs e)
         {
-            if (new BoatAddWindow(db){ isEditable = true, boatModel = dgBoats.SelectedValue.ToString() }.ShowDialog() == true)
+            if (new AccessoryAddPage(db) { isEditable = true, accName = dgAcc.SelectedValue.ToString() }.ShowDialog() == true)
             {
                 dgRefresh();
             }
@@ -49,24 +49,16 @@ namespace YahtClub
 
         private void btnDelate_Click(object sender, RoutedEventArgs e)
         {
-            var boat = db.Boats.Where(b => b.Model == dgBoats.SelectedValue.ToString()).FirstOrDefault();
+            var acc = db.Accessory.Where(a => a.AccName== dgAcc.SelectedValue.ToString()).FirstOrDefault();
             if (MessageBox.Show(
-                "Вы точно хотите удалить данную модель судна?",
+                "Вы точно хотите удалить данную этот аксесуар?",
                 "Внимание!",
                 MessageBoxButton.YesNoCancel,
                 MessageBoxImage.Question
                 ) == MessageBoxResult.Yes)
             {
-                db.Boats.Remove(boat);
+                db.Accessory.Remove(acc);
                 db.SaveChanges();
-                dgRefresh();
-            }
-        }
-
-        private void btnAddNewBoat_Click(object sender, RoutedEventArgs e)
-        {
-            if (new BoatAddWindow(db).ShowDialog() == true)
-            {
                 dgRefresh();
             }
         }
@@ -74,8 +66,16 @@ namespace YahtClub
         private void dgRefresh()
         {
 
-            dgBoats.ItemsSource = db.Boats.ToList();
-            dgBoats.Items.Refresh();
+            dgAcc.ItemsSource = db.Accessory.ToList();
+            dgAcc.Items.Refresh();
+        }
+
+        private void btnAddNewAcc_Click(object sender, RoutedEventArgs e)
+        {
+            if (new AccessoryAddPage(db).ShowDialog() == true)
+            {
+                dgRefresh();
+            }
         }
     }
 }

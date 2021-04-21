@@ -39,6 +39,11 @@ namespace YahtClub
                 tbPrice.Text = boat.BasePrice.ToString();
                 tbColor.Text = boat.Colour;
                 cbMast.IsChecked = boat.Mast;
+                tbModel.Text = boat.Model;
+                tbType.Text = boat.BoatType;
+                tbWood.Text = boat.Wood;
+                tbVat.Text = boat.VAT;
+                tbNoR.Text = boat.NumberOfRowers.ToString();
                 tbModel.IsEnabled = false;
                 btnAdd.Content = "Edit";
                 Title = "Edit boat";
@@ -56,27 +61,40 @@ namespace YahtClub
             if (tbPrice.Text != "" && tbNoR.Text != "" && tbModel.Text != "" && tbColor.Text != ""
                 && tbType.Text != "" && tbVat.Text != "" && tbWood.Text != "")
             {
-                boat.Model = tbModel.Text;
-                boat.Colour = tbColor.Text;
-                boat.BasePrice = tbPrice.Text;
+                try
+                {
+                    boat.Model = tbModel.Text;
+                    boat.Colour = tbColor.Text;
+                    boat.BasePrice = decimal.Parse(tbPrice.Text);
+                    boat.BoatType = tbType.Text;
+                    boat.Mast = (bool)cbMast.IsChecked;
+                    boat.Wood = tbWood.Text;
+                    boat.VAT = tbVat.Text;
+                    boat.NumberOfRowers = int.Parse(tbNoR.Text);
+                }
+                catch(Exception exep)
+                {
+                    MessageBox.Show(exep.Message, "Error!", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
+
                 if (isEditable)
                 {
-                    user.is_banned = (bool)cbIsBanned.IsChecked;
+                    boat.Mast = (bool)cbMast.IsChecked;
                 }
                 else
                 {
-                    if (db.Users.Where(u => u.login == tbLogin.Text).FirstOrDefault() == null)
+                    if (db.Boats.Where(b => b.Model == tbModel.Text).FirstOrDefault() == null)
                     {
-                        user.last_entry = DateTime.Now;
-                        db.Users.Add(user);
+                        db.Boats.Add(boat);
                     }
-                    else MessageBox.Show("Пользователь с таким логином уже существует.", "Внимание!", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    else MessageBox.Show("Судно с такой моделью уже существует.", "Внимание!", MessageBoxButton.OK, MessageBoxImage.Warning);
                 }
                 db.SaveChanges();
                 DialogResult = true;
                 this.Close();
             }
-            else MessageBox.Show("Поля логина и пароля не должны быть пустыми.", "Внимание!", MessageBoxButton.OK, MessageBoxImage.Warning);
+            else MessageBox.Show("Все поля должны быть заполнены.", "Внимание!", MessageBoxButton.OK, MessageBoxImage.Warning);
             
         }
 

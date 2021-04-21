@@ -70,8 +70,20 @@
     <Compile Include="Accessory.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="AccessoryAddPage.xaml.cs">
+      <DependentUpon>AccessoryAddPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AccessoryPage.xaml.cs">
+      <DependentUpon>AccessoryPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Boats.cs">
       <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BoatsAndAccAddPage.xaml.cs">
+      <DependentUpon>BoatsAndAccAddPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BoatsAndAccPage.xaml.cs">
+      <DependentUpon>BoatsAndAccPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="ChangePasswordWindow.xaml.cs">
       <DependentUpon>ChangePasswordWindow.xaml</DependentUpon>
@@ -151,6 +163,22 @@
     <Compile Include="UsersPage.xaml.cs">
       <DependentUpon>UsersPage.xaml</DependentUpon>
     </Compile>
+    <Page Include="AccessoryAddPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AccessoryPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BoatsAndAccAddPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BoatsAndAccPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ChangePasswordWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

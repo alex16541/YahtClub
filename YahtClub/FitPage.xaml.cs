@@ -37,7 +37,12 @@ namespace YahtClub
 
         private void btnAccessory_Click(object sender, RoutedEventArgs e)
         {
+            NavigationService.Navigate(new AccessoryPage());
+        }
 
+        private void btnFit_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new BoatsAndAccPage());
         }
     }
 }
