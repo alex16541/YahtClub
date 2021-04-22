@@ -5,10 +5,31 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:YahtClub"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="BoatsAndAccPage">
-
+      d:DesignHeight="600" d:DesignWidth="800"
+      Title="BoatsAndAccPage"
+      Background="White">
     <Grid>
-        
+        <DataGrid x:Name="dgFit" HorizontalAlignment="Left" Height="490" Margin="10,10,0,0" 
+                  VerticalAlignment="Top" Width="780" FontSize="18"
+                  AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Модель судна" Binding="{Binding Boats.Model}"/>
+                <DataGridTextColumn Header="Название аксесуара" Binding="{Binding Accessory.AccName}"/>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Button Content="Edit" x:Name="btnEdit" Click="btnEdit_Click"/>
+                                <Button Content="Delate" x:Name="btnDelate" Click="btnDelate_Click"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="btnBack" Content="Back" HorizontalAlignment="Center" Margin="10,500,500,10" VerticalAlignment="Center" Width="246" Height="36" 
+            FontSize="20" Click="btnBack_Click" />
+        <Button x:Name="btnAddNewFit" Content="Add New Fit" HorizontalAlignment="Center" Margin="500,500,10,10" VerticalAlignment="Center" Width="246" Height="36" 
+            FontSize="20" Click="btnAddNewFit_Click" />
     </Grid>
 </Page>
