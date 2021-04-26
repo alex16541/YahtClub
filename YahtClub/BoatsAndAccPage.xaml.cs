@@ -44,7 +44,7 @@ namespace YahtClub
 
         private void btnEdit_Click(object sender, RoutedEventArgs e)
         {
-            if (new BoatsAndAccAddPage(db) { isEditable = true, fitId = dgFit.SelectedValue.ToString() }.ShowDialog() == true)
+            if (new BoatsAndAccAddPage(db) { isEditable = true, fitId = int.Parse(dgFit.SelectedValue.ToString()) }.ShowDialog() == true)
             {
                 dgRefresh();
             }
@@ -68,7 +68,7 @@ namespace YahtClub
 
         private void btnAddNewFit_Click(object sender, RoutedEventArgs e)
         {
-            if (new BoatAddWindow(db).ShowDialog() == true)
+            if (new BoatsAndAccAddPage(db).ShowDialog() == true)
             {
                 dgRefresh();
             }

@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Data.Entity;
 
 namespace YahtClub
 {
@@ -22,18 +23,18 @@ namespace YahtClub
     {
         public Entities db { get; set; }
         Fit fit = new Fit();
-        public int fitId = "";
+        public int fitId;
         public bool isEditable = false;
         public BoatsAndAccAddPage(Entities db)
         {
             InitializeComponent();
             this.db = db;
+            Top = (1080 - this.Height) / 2;
+            Left = (1920 - this.Width) / 2;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            this.Top = (1080 - this.Height) / 2;
-            this.Left = (1920 - this.Width) / 2;
             cbBoat.ItemsSource = db.Boats.ToList();
             cbBoat.SelectedValuePath = "boat_ID";
             cbBoat.DisplayMemberPath = "Model";
